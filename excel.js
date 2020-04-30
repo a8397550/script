@@ -39,4 +39,20 @@ var wb = {
   }
 };
 
+const s2ab = function (s) {
+      var buf = new ArrayBuffer(s.length);
+      var view = new Uint8Array(buf);
+
+      for (var i = 0; i !== s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+
+      return buf;
+};
+
+const wopts = {bookType: 'xlsx', bookSST: false, type: 'binary'};
+const wbout = XLSX.write(wb, wopts);
+const buffer = Buffer.from(s2ab(wbout));
+const blob = new Blob([buffer], {type: 'application/vnd.ms-excel'});
+const myFile = new File([blob], filename + '.xls');
+
+
 XLSX.writeFile(wb, output);
