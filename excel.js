@@ -1,5 +1,6 @@
 const XLSX = require('xlsx');
 const output = './output1.xlsx';
+const fs = require('fs');
 
 function read() {
   let filename = './output.xlsx';
@@ -40,19 +41,21 @@ var wb = {
 };
 
 const s2ab = function (s) {
-      var buf = new ArrayBuffer(s.length);
-      var view = new Uint8Array(buf);
+  var buf = new ArrayBuffer(s.length);
+  var view = new Uint8Array(buf);
 
-      for (var i = 0; i !== s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+  for (var i = 0; i !== s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
 
-      return buf;
+  return buf;
 };
 
 const wopts = {bookType: 'xlsx', bookSST: false, type: 'binary'};
 const wbout = XLSX.write(wb, wopts);
 const buffer = Buffer.from(s2ab(wbout));
-const blob = new Blob([buffer], {type: 'application/vnd.ms-excel'});
-const myFile = new File([blob], filename + '.xls');
+const fsWriteStream = fs.createWriteStream(buffer);
+// 前端浏览器使用
+// const blob = new Blob([buffer], {type: 'application/vnd.ms-excel'});
+// const myFile = new File([blob], filename + '.xls');
 
 
 XLSX.writeFile(wb, output);

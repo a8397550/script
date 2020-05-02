@@ -5,13 +5,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "node",
+      "type": "node", // 代码类型
       "request": "launch",
       "name": "Launch Program",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "program": "${workspaceFolder}/excel.js"
+      "program": "${workspaceFolder}/fs_read_log.js", // 运行js地址
+      "args" : ["./test.txt"] // 参数
     }
   ]
 }
