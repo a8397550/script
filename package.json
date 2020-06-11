@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/a8397550/script#readme",
   "dependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "querystring": "^0.2.0",
     "xlsx": "^0.15.6"
   }
 }

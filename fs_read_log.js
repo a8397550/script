@@ -31,11 +31,11 @@ var fsRead = function (fd, buffer) {
       let str = '';
       if (bytesRead === 255) {
         str = buffer.toString();
-        console.log(buffer.toString());
+        // console.log(buffer.toString());
       } else {
         str = buffer.slice(0, bytesRead).toString();
-        console.log(bytesRead);
-        console.log(buffer.slice(0, bytesRead).toString());
+        // console.log(bytesRead);
+        // console.log(buffer.slice(0, bytesRead).toString());
       }
 
       if (lineStr) {
